@@ -1,3 +1,7 @@
+import java.util.HashMap;
+import java.util.Set;
+
+
 public class Rough {
 
 
@@ -131,7 +135,182 @@ public static void sumOfDigits(int num){
     System.out.println(n);
 }
 
+public static void reverseString(String str){
 
+    String nstr = " ";
+
+    for (char c : str.toCharArray()) {
+        nstr = c + nstr;
+    }
+
+    System.out.println(nstr);
+}
+
+public static void reverseEachWord(String str){
+
+    
+    String reverse = " ";
+
+    for (String s : str.split(" ")) {
+        String nstr = " ";
+        for (char c : s.toCharArray()) {
+          nstr = c + nstr;
+        }
+        reverse = reverse + nstr;
+    }
+    System.out.println(reverse);
+    
+}
+
+public static void dupeChar(String str){
+
+    HashMap<Character,Integer> dupeChar = new HashMap<>();
+
+    for (char c : str.toCharArray()) {
+        if (dupeChar.containsKey(c)) {
+            dupeChar.put(c, dupeChar.get(c)+1);
+        } else {
+            dupeChar.put(c, 1);
+        }
+    }
+
+
+    Set<Character> charInString = dupeChar.keySet();
+
+    for (char c : charInString) {
+        if (dupeChar.get(c)>1) {
+            System.out.println(c + " : " + dupeChar.get(c));
+        }
+    }
+}
+
+public static void occuranceOfEachChar(String str){
+
+
+    HashMap<String,Integer> dupeChar = new HashMap<>();
+
+    for (String c : str.split(" ")) {
+        if (dupeChar.containsKey(c)) {
+            dupeChar.put(c, dupeChar.get(c)+1);
+        } else {
+            dupeChar.put(c, 1);
+        }
+    }
+
+
+    Set<String> charInString = dupeChar.keySet();
+
+    for (String s : charInString) {
+        if (dupeChar.get(s)>1) {
+            System.out.println(s + " : " + dupeChar.get(s));
+        }
+    }
+}
+
+public static void countWords(String str){
+    String [] s = str.split(" ");
+    int n = s.length;
+    System.out.println(n);
+}
+
+public static void permutation(String str,String prefix){
+    if (str.length() == 0) {
+        System.out.println(prefix);
+    }
+    for (int i = 0; i <str.length(); i++) {
+        
+        String rem = str.substring(0,i) + str.substring(i+1);
+        permutation(rem, prefix + str.charAt(i));
+    }
+}
+
+public static void palindrome(String str){
+
+    int first = 0;
+    int last = str.length()-1;
+    while (first < last) {
+        if (str.charAt(last) != str.charAt(first)) {
+            System.out.println("not a palindrome");
+            return;
+        }
+        first++;
+        last--;
+    }
+    System.out.println("palindrome");
+}
+
+public static void anograms(String str1,String str2){
+    char[] check = new char[256];
+
+    if (str1.length() != str2.length()) {
+        System.out.println("not anograms");
+        return;
+    }
+
+   for (int i = 0; i < str1.length(); i++) {
+       check[str1.charAt(i)]++;
+       check[str2.charAt(i)]--;
+   }
+
+   for (int i : check) {
+       if (i != 0) {
+        System.out.println("not anograms");
+        return;
+       }
+   }
+
+   System.out.println("anograms");
+}
+
+public static void vAndC(String str){
+
+    int v = 0;
+    int c = 0;
+
+    for (char ch : str.toCharArray()) {
+        if (ch == 'a'||ch == 'e'||ch == 'i'||ch == 'o'||ch == 'u') {
+            v++;
+        } else {
+            c++;
+        }
+    }
+    System.out.println("vowel : " + v);
+    System.out.println("consonant : " + c);
+}
+
+public static void unique(String str){
+
+    boolean[] unique = new boolean[256];
+
+    for (char c : str.toCharArray()) {
+        if (!unique[c]) {
+            System.out.print(c + " ");
+            unique[c]= true;
+        }
+    }
+    
+}
+
+public static void evenIndex(String str){
+
+    for (int i = 0; i < str.length(); i++) {
+        if (i%2==0) {
+            System.out.print(str.charAt(i));
+        }
+    }
+}
+
+
+public static void removeSpace(String str){
+    StringBuilder result = new StringBuilder();
+
+    for (char c : str.toCharArray()) {
+        if (c != ' ') {
+            result.append(c);
+        }
+    }
+    System.out.println(result);
+}
 
 
 
@@ -170,6 +349,51 @@ public static void main(String[] args) {
     System.out.println();
 
     sumOfDigits(55636632);
+    System.out.println();
+
+    reverseString("Ram Ram");
+    reverseString("har har mahadev");
+    System.out.println();
+
+    reverseEachWord("har har mahadev");
+    System.out.println();
+
+    dupeChar("Har Har Mahadev Shambhu har har mahadev");
+    System.out.println();
+
+    occuranceOfEachChar("Har Har Mahadev Shambhu har har mahadev");
+    System.out.println();
+
+    countWords("Har Har Mahadev Shambhu har har mahadev");
+    System.out.println();
+
+    permutation("ABC", " ");
+    System.out.println();
+
+    palindrome("MALAYALAM");
+    palindrome("FJAIJFIAJF");
+    System.out.println();
+
+
+    anograms("ram ram","sita sita");
+    anograms("ram", "mar");
+    System.out.println();
+
+    vAndC("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
+
+    unique("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
+    System.out.println();
+
+    evenIndex("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
+    System.out.println();
+
+    removeSpace("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
+
+
 
 
 
