@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -313,6 +314,132 @@ public static void removeSpace(String str){
 }
 
 
+public static void eachLetterTwice(String str){
+
+    StringBuilder result = new StringBuilder();
+
+    for (char c : str.toCharArray()) {
+            result.append(c).append(c);
+    }
+    System.out.println(result);
+}
+
+
+public static void swap2String(String str1, String str2){
+
+    str1 = str1 + str2;
+    str2 = str1.substring(0,str1.length()-str2.length());
+    str1 = str1.substring(str2.length());
+
+    System.out.println(str1);
+    System.out.println(str2);
+}
+
+public static void count(String str){
+    
+    StringBuilder result = new StringBuilder();
+    
+
+    int count = 1;
+    for (int i = 0; i < str.length(); i++) {
+        if (i+1 < str.length() && str.charAt(i) == str.charAt(i+1)) {
+            count++;
+        } else {
+            result.append(str.charAt(i)).append(count);
+            count = 1;
+        }
+    }
+    System.out.println( result);
+}
+
+
+public static void upperLowerCase(String str){
+
+    StringBuilder upper = new StringBuilder();
+    StringBuilder lower = new StringBuilder();
+
+
+    
+    for (char c : str.toCharArray()) {
+        if (Character.isLowerCase(c)) {
+            lower.append(c);
+        } else {
+            upper.append(c);
+        }
+    }
+    System.out.println(lower);
+    System.out.println(upper);
+}
+
+
+public static void digitAlpha(String str){
+     StringBuilder digit = new StringBuilder();
+    StringBuilder alpha = new StringBuilder();
+
+
+    
+    for (char c : str.toCharArray()) {
+        if (Character.isAlphabetic(c)) {
+            alpha.append(c);
+        } else {
+            digit.append(c);
+        }
+    }
+    System.out.println(alpha);
+    System.out.println(digit);
+}
+
+
+public static void numAlphaInSame(String str){
+
+     StringBuilder digit = new StringBuilder();
+    StringBuilder alpha = new StringBuilder();
+
+
+    
+    for (char c : str.toCharArray()) {
+        if (Character.isAlphabetic(c)) {
+            alpha.append(c);
+        } else {
+            digit.append(c);
+        }
+    }
+    System.out.println(digit.append(alpha).toString());
+}
+
+
+public static void format (String str){
+
+    long n = Long.parseLong(str);
+    String format = String.format("%011d",n );
+    System.out.println(format);
+}
+
+public static void longestWitoutRepeatingChar(String str){
+
+    HashSet<Character> set = new HashSet<>();
+    
+    int maxLength = 0;
+    int start = 0;
+    int end = 0;
+
+    while (end<str.length()) {
+        if (!set.contains(str.charAt(end))) {
+            set.add(str.charAt(end));
+            maxLength = Math.max(maxLength, end - start +1);
+            end++;
+        } else {
+            set.remove(str.charAt(start));
+            start++;
+        }
+
+    }
+
+    System.out.println(maxLength);
+
+
+}
+
 
 
 public static void main(String[] args) {
@@ -393,7 +520,30 @@ public static void main(String[] args) {
     removeSpace("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
     System.out.println();
 
+    eachLetterTwice("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
 
+    swap2String("ram", "sita");
+    System.out.println();
+
+    count("haaar haaaaar maaaaaahhhhaaa deeeevvv");
+    System.out.println();
+
+    upperLowerCase("hAR haR MahaDEV shAMBHU harHAR mAHDEV");
+    System.out.println();
+
+    digitAlpha("har55 har52662626 m24456565655a6h7dev44 s4h466mbhu");
+    System.out.println();
+
+    numAlphaInSame("har55 har52662626 m24456565655a6h7dev44 s4h466mbhu");
+    System.out.println();
+
+
+    format("0121200");
+    format("45");
+    System.out.println();
+
+    longestWitoutRepeatingChar("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
 
 
 
