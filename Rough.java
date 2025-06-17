@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -632,6 +633,23 @@ public static void countOddAndEven(int [] arr){
     System.out.println("even : " +  even);
     System.out.println("odd : " +  odd);
 }
+
+public static void findNonRepeatingElements(int [] arr){
+
+    HashMap<Integer, Integer> countMap = new HashMap<>();
+    
+    for (int i : arr) {
+            countMap.put(i, countMap.getOrDefault(i, 0)+1);
+        
+    }
+
+    for (Map.Entry<Integer, Integer> en : countMap.entrySet()) {
+        if (en.getValue()==1) {
+            System.out.print(en.getKey() + " ");
+        }
+        
+    }
+}
 public static void main(String[] args) {
     
 
@@ -804,6 +822,10 @@ public static void main(String[] args) {
         countOddAndEven(arr3);
         System.out.println();
 
+        int[] arr6 = {4,5,6,3,6,7,2,1,78,15,71,71,61};
+        
+
+        findNonRepeatingElements(arr6);
 
 
 
