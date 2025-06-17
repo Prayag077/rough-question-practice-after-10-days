@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -434,14 +435,203 @@ public static void longestWitoutRepeatingChar(String str){
         }
 
     }
-
     System.out.println(maxLength);
+}
+
+public static void commonElementsArray(int []arr1 , int [] arr2){
+
+    HashSet<Integer> set1 = new HashSet<>();
+    HashSet<Integer> commonSet = new HashSet<>();
 
 
+    for (int i : arr1) {
+        set1.add(i);
+    }
+
+    for (int i : arr2) {
+        if (set1.contains(i)) {
+            commonSet.add(i);
+        }
+    }
+    System.out.println(commonSet);
+}
+
+public static void firstAndLastElementArrayList(ArrayList<String>list){
+
+    System.out.println(list.get(0));
+    System.out.println(list.get(list.size()-1));
 }
 
 
+public static void printArr(int[]arr){
 
+    for (int i  : arr) {
+      System.out.print(i + " ");  
+    }
+    System.out.println();
+}
+
+
+public static void bubbleSort(int[] arr){
+
+    for (int i = 0; i < arr.length-1; i++) {
+        for (int j = 0; j < arr.length-1-i; j++) {
+            if (arr[j]>arr[j+1]) {
+                int temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    printArr(arr);
+}
+
+public static void selectionSort(int [] arr){
+
+    for (int i = 0; i < arr.length-1; i++) {
+        int minIndex = i;
+        for (int j = i+1; j < arr.length; j++) {
+            if (arr[j]<arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+    printArr(arr);
+}
+
+public static void insertionSort(int [] arr){
+
+    for (int i = 1; i < arr.length; i++) {
+        int current = arr[i];
+        int j = i-1;
+        while (current<arr[j]) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = current;
+    }
+    printArr(arr);
+}
+
+
+public static void removeDuplicatesFromAnArray(int [] arr){
+
+    HashSet<Integer> set = new HashSet<>();
+
+    for (int i : arr) {
+        set.add(i);
+    }
+    int [] result = new int [set.size()];
+    int i = 0;
+    for (int num : set) {
+        result[i++] = num;
+    }   
+    printArr(result);
+    
+}
+
+public static void removeDuplicatesArrayList(ArrayList<Integer> list){
+
+    HashSet<Integer> set = new HashSet<>(list);
+    System.out.println(set);     
+}
+
+public static void findTheMissingNumber(int[]arr){
+    int n = arr.length +1;
+    int totalSum =n*(n+1)/2;
+    int sum = 0;
+
+    for (int i  : arr) {
+        sum += i;
+    }
+
+    System.out.println(totalSum - sum);
+}
+
+public static void largestAndSmallestArray(int []arr){
+
+    int first = arr[0];
+    int last = arr[0];
+
+    for (int i = 0; i < arr.length ;i++){
+
+        if (first > arr[i]) {
+            first = arr[i];
+        }
+
+        if (last < arr[i]) {
+            last = arr[i];
+        }
+    }
+
+    System.out.println("first : " + first);
+    System.out.println("last : " + last);
+}
+
+public static void searchElementInArray(int[]arr, int target){
+    int count = 0;
+    for (int i : arr) {
+        count++;
+        if (target == i) {
+            System.out.println(count);
+            return;
+        }
+    }
+    System.out.println("Element Not Found");
+}
+
+public static void sumOnlyIntegers(String [] arr){
+    int a = 0;
+    for (String i : arr) {
+        
+        try {
+             a += Integer.parseInt(i);
+        } catch (NumberFormatException e) {
+        }
+    }
+
+    System.out.println(a);
+}
+
+public static void findMinAndMax(int [] arr){
+
+    if (arr.length == 0) {
+        throw new IllegalArgumentException("array must not be empty");
+    }
+
+    int min = arr[0];
+    int max = arr[0];
+
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i]> max) {
+            max = arr[i];
+        }
+        if (arr[i]<min) {
+            min = arr[i];
+        }
+    }
+    System.out.println("min : " + min);
+    System.out.println("max : " + max);
+
+}
+
+public static void countOddAndEven(int [] arr){
+    int even = 0;
+    int odd = 0;
+
+    for (int i  : arr) {
+        if (i % 2 == 0) {
+            even++;
+        } else {
+            odd++;
+        }
+    }
+    System.out.println("even : " +  even);
+    System.out.println("odd : " +  odd);
+}
 public static void main(String[] args) {
     
 
@@ -544,6 +734,78 @@ public static void main(String[] args) {
     System.out.println();
 
     longestWitoutRepeatingChar("siyva var ram chandra ki jai pawan sut hanuman ki hai umapati mahadev ki jai");
+    System.out.println();
+
+
+    int[] arr1 = {1, 2, 3, 4, 5};
+    int[] arr2 = {4, 5, 6, 7, 8};
+    commonElementsArray(arr1, arr2);
+    System.out.println();
+
+    ArrayList<String> arrayList = new ArrayList<>();
+    arrayList.add("Apple");
+    arrayList.add("Banana");
+    arrayList.add("Cherry");
+    arrayList.add("Date");
+    arrayList.add("Elderberry");
+
+    firstAndLastElementArrayList(arrayList);
+    System.out.println();
+
+    int[] arr3 = {5,2,5,7,8,4,7,2,72,7,9,1,6};
+    bubbleSort(arr3);
+    System.out.println();
+
+    selectionSort(arr3);
+    System.out.println();
+
+    insertionSort(arr3);
+    System.out.println();
+
+    removeDuplicatesFromAnArray(arr3);
+    System.out.println();
+
+
+    
+ ArrayList<Integer> arrayList1 = new ArrayList<>();
+        arrayList1.add(5);
+        arrayList1.add(2);
+        arrayList1.add(9);
+        arrayList1.add(1);
+        arrayList1.add(6);
+        arrayList1.add(2);
+        arrayList1.add(5);
+
+        removeDuplicatesArrayList(arrayList1);
+        System.out.println();
+
+        int[] arr4= {1, 2, 4, 5, 6}; 
+        findTheMissingNumber(arr4);
+        System.out.println();
+
+        largestAndSmallestArray(arr4);
+        largestAndSmallestArray(arr3);
+        System.out.println();
+
+
+
+        searchElementInArray(arr3,72);
+        System.out.println();
+
+
+        String[] arr5 = {"5", "2", "9", "a", "1", "6", "#", "3"};
+        sumOnlyIntegers(arr5);
+        System.out.println();
+
+        findMinAndMax(arr4);
+        findMinAndMax(arr3);
+        System.out.println();
+
+        countOddAndEven(arr3);
+        System.out.println();
+
+
+
 
 
 
