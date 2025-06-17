@@ -650,6 +650,231 @@ public static void findNonRepeatingElements(int [] arr){
         
     }
 }
+
+
+public static void solidRectangle(int n, int m){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=m; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+public static void hollowRectangle(int n, int m){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=m; j++) {
+            if (i == 1 || i == n ||j == 1 ||j == m) {
+                System.out.print("X ");
+            } else {
+                System.out.print("  ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+public static void halfPyramid(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+public static void invertedHalfPyramid(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+public static void invertedHalfPyramid1(int n){
+
+    for (int i = n; i >=1; i--) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+public static void invertedHalfPyramid180(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+public static void halfPyramidWithNumbers(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print( j +" ");
+        }
+        System.out.println();
+    }
+}
+
+public static void invertedHalfPyramidWithNumbers(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n -i +1; j++) {
+            System.out.print( j +" ");
+        }
+        System.out.println();
+    }
+}
+
+public static void floydsTraingle(int n){
+    int c = 1;
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print(c++  + " ");
+        }
+        System.out.println();
+    }
+}
+
+public static void zeroOneTraingle(int n){
+    
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=i; j++) {
+            if ((i + j )%2 ==0) {
+                System.out.print("0 ");
+            } else {
+                System.out.print("1 ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+public static void butterfly(int n){
+    
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+
+        for (int j = 1; j <=(n-i)*2; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+
+    for (int i = n; i >=1; i--) {
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+
+        for (int j = 1; j <=(n-i)*2; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=i; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+
+public static void rohmbus(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=n; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+
+}
+
+public static void numberPyramid(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=i; j++) {
+            System.out.print(i + "   ");
+        }
+        System.out.println();
+    }
+}
+
+public static void palindromicPattern(int n){
+
+     for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = i; j >=1; j--) {
+            System.out.print(j + " ");
+        }
+
+        for (int j = 2; j <=i; j++) {
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
+}
+
+public static void diamondPattern(int n){
+
+    for (int i = 1; i <=n; i++) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=(i*2)-1; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+
+    for (int i = n; i >=1; i--) {
+        for (int j = 1; j <=n-i+1; j++) {
+            System.out.print("  ");
+        }
+
+        for (int j = 1; j <=(i*2)-1; j++) {
+            System.out.print("x ");
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
 public static void main(String[] args) {
     
 
@@ -826,13 +1051,55 @@ public static void main(String[] args) {
         
 
         findNonRepeatingElements(arr6);
+        System.out.println();
+        System.out.println();
 
+        int n = 5;
+        int m = 6;
 
+        solidRectangle(n, m);
+        System.out.println();
 
+        hollowRectangle(n, m);
+        System.out.println();
 
+        halfPyramid(n);
+        System.out.println();
 
+        invertedHalfPyramid(n);
+        System.out.println();
 
+        invertedHalfPyramid1(n);
+        System.out.println();
 
-}
+        invertedHalfPyramid180(n);
+        System.out.println();
 
+        halfPyramidWithNumbers(n);
+        System.out.println();
+
+        invertedHalfPyramidWithNumbers(n);
+        System.out.println();
+
+        floydsTraingle(n);
+        System.out.println();
+
+        zeroOneTraingle(n);
+        System.out.println();
+
+        butterfly(n);
+        System.out.println();
+
+        rohmbus(n);
+        System.out.println();
+
+        numberPyramid(n);
+        System.out.println();
+
+        palindromicPattern(n);
+        System.out.println();
+
+        diamondPattern(n);
+        System.out.println();
+    }
 }
