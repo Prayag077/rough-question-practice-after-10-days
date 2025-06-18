@@ -138,6 +138,14 @@ public static void sumOfDigits(int num){
     System.out.println(n);
 }
 
+public static void leapYearCheck(int n){
+    if ((n%4==0 && n%100 !=0) || n%400 == 0 ) {
+        System.out.println(n + " is leap Year");
+    } else {
+        System.out.println(n + " is not a leap year");
+    }
+}
+
 public static void reverseString(String str){
 
     String nstr = " ";
@@ -422,17 +430,17 @@ public static void longestWitoutRepeatingChar(String str){
     HashSet<Character> set = new HashSet<>();
     
     int maxLength = 0;
-    int start = 0;
-    int end = 0;
+    int start1 = 0;
+    int end1 = 0;
 
-    while (end<str.length()) {
-        if (!set.contains(str.charAt(end))) {
-            set.add(str.charAt(end));
-            maxLength = Math.max(maxLength, end - start +1);
-            end++;
+    while (end1<str.length()) {
+        if (!set.contains(str.charAt(end1))) {
+            set.add(str.charAt(end1));
+            maxLength = Math.max(maxLength, end1 - start1 +1);
+            end1++;
         } else {
-            set.remove(str.charAt(start));
-            start++;
+            set.remove(str.charAt(start1));
+            start1++;
         }
 
     }
@@ -649,6 +657,26 @@ public static void findNonRepeatingElements(int [] arr){
         }
         
     }
+}
+
+    
+
+public static void reverseAnArray(int [] arr){
+
+    printArr(arr);
+    
+    int first = 0;
+    int last = arr.length-1;
+
+    while (first < last ) {
+        int temp = arr[first];
+        arr[first] = arr[last];
+        arr[last] = temp;
+
+        first++;
+        last--;
+    }
+    printArr(arr);
 }
 
 
@@ -869,6 +897,153 @@ public static void diamondPattern(int n){
         System.out.println();
     }
 }
+
+
+public static void printNUmberInReverseRecurstion(int n ){
+    if (n == 0) {
+        return;
+    }
+
+    System.out.println(n);
+    printNUmberInReverseRecurstion(n-1);
+}
+
+
+public static void printNUmberInOrderRecurstion(int n ){
+    if (n == 0) {
+        return;
+    }
+
+    printNUmberInOrderRecurstion(n-1);
+    System.out.println(n);
+}
+
+public static int sumOfNaturalNumbersRecurion(int n){
+    if (n == 0) {
+        return 0;
+    }
+    return n + sumOfNaturalNumbersRecurion(n-1);
+}
+
+public static int recursiveFactorial(int n ){
+
+    if (n == 0) {
+        return 1;
+    }
+
+    return n * recursiveFactorial(n-1);
+}
+
+
+public static void recursiveFibonacci(int a , int b , int n){
+    if (n==0) {
+        return;
+    }
+    System.out.println(a);
+    recursiveFibonacci(b,a + b, n-1);  
+}
+
+public static int recurisvePower(int a , int b){
+    if (b == 0) {
+        return 1;
+    }
+
+    return a * recurisvePower(a, b-1);
+}
+
+public static int recurisvePowerLog(int a , int b){
+    if (b==0) {
+        return 1;
+    }
+
+    if (b%2==0) {
+        return recurisvePowerLog(a, b/2) * recurisvePowerLog(a, b/2);
+    } else {
+        return recurisvePower(a, b/2) * recurisvePower(a, b/2) *a ;
+    }
+}
+
+public static void towerOfHanoi(int n ,String src , String helper , String desti){
+    if (n==1) {
+        System.out.println("transfer disc " + n +  " from " + src + " to " +  desti);
+        return;
+    }
+
+    towerOfHanoi(n-1, src, desti, helper);
+    System.out.println("transfer disc " + n +  " from " + src + " to " +  desti);
+
+    towerOfHanoi(n-1, helper, src, desti);
+}
+
+
+public static void recursiveWayToReverseString(String str, int idx , String nstr){
+    if (idx == str.length()) {
+        System.out.println(nstr);
+        return;
+    }
+    nstr = str.charAt(idx) + nstr;
+    recursiveWayToReverseString(str, idx+1, nstr);
+    
+}
+
+static int start = -1;
+static int  end =-1;
+
+public static void recursvieWayToFindFirstAndLastOccurance(String str, int idx , char c){
+
+    
+    if (str.length() == idx) {
+        System.out.println("first idx : " + start);
+        System.out.println("last idx : " + end);
+        return;
+    }
+    if (str.charAt(idx) == c) {
+        if (start == -1) {
+            start = idx;
+
+        } else {
+            end = idx;
+        
+        }
+    }
+    recursvieWayToFindFirstAndLastOccurance(str, idx+1, c);
+}
+
+public static void recursiveWayToFindIftheArrayIsStrictlyIncreasing(int[] arr, int idx){
+    if (arr.length-1 == idx ) {
+        System.out.println("sorted");
+        return;
+    }
+
+
+    if (arr[idx] >= arr[idx+1]) {
+        System.out.println("not sorted");
+        return;
+    }
+    recursiveWayToFindIftheArrayIsStrictlyIncreasing(arr, idx+1);
+}
+
+
+public static void recurisveWayToMoveAllXToTheEnd(String str, int idx, int count, String nstr){
+    if (idx == str.length()) {
+        for (int i = 0; i <count; i++) {
+            nstr += 'x'; 
+        }
+        System.out.println(nstr);
+        return;
+    }
+
+
+
+    if (str.charAt(idx)== 'x') {
+        count++;
+    } else {
+        nstr += str.charAt(idx);
+    }
+
+    recurisveWayToMoveAllXToTheEnd(str, idx+1, count, nstr);
+}
+
 
 
 
@@ -1101,5 +1276,63 @@ public static void main(String[] args) {
 
         diamondPattern(n);
         System.out.println();
+
+        reverseAnArray(arr6);
+        System.out.println();
+
+
+        reverseAnArray(arr4);
+        System.out.println();
+
+        leapYearCheck(2020);
+        leapYearCheck(2014);
+        leapYearCheck(2025);
+        System.out.println();
+
+        printNUmberInReverseRecurstion(n);
+        System.out.println();
+
+        printNUmberInOrderRecurstion(n);
+        System.out.println();
+
+        System.out.println(sumOfNaturalNumbersRecurion(n));
+        System.out.println();
+
+
+        System.out.println(recursiveFactorial(n));  
+        System.out.println();
+
+        recursiveFibonacci(0, 1, 10);
+        System.out.println();
+
+
+        System.out.println(recurisvePower(n, 2));
+        System.out.println(recurisvePower(n, 3));
+        System.out.println();
+
+        System.out.println(recurisvePowerLog(n, 2));
+        System.out.println(recurisvePowerLog(n, 3));
+        System.out.println();
+
+        towerOfHanoi(5, "s", "h", "d");
+        System.out.println();
+
+        recursiveWayToReverseString("ramSitaRam", 0, " ");
+        System.out.println();
+
+        recursvieWayToFindFirstAndLastOccurance("ramsitaramsitaram", 0, 'r');
+        System.out.println();
+
+        int [] arr7 = {1,2,3,4,6,8,9};
+        recursiveWayToFindIftheArrayIsStrictlyIncreasing(arr6, 0);
+        recursiveWayToFindIftheArrayIsStrictlyIncreasing(arr4, 0);
+        recursiveWayToFindIftheArrayIsStrictlyIncreasing(arr7, 0);
+        System.out.println();
+
+
+        recurisveWayToMoveAllXToTheEnd("ramsitxaxxrxamsxxitaxxramxsxxxixxtxxxxaram", 0,0, " ");
+
+
+        
     }
 }
