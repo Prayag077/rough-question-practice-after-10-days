@@ -1044,6 +1044,69 @@ public static void recurisveWayToMoveAllXToTheEnd(String str, int idx, int count
     recurisveWayToMoveAllXToTheEnd(str, idx+1, count, nstr);
 }
 
+    
+    static boolean[] map = new boolean[256];
+    
+
+public static void recursiveRemoveDuplicates(String str, int idx , String nstr){
+
+    if (str.length()== idx) {
+        System.out.println(nstr);
+        return;
+    }
+
+
+    if (!map[str.charAt(idx)]) {
+        nstr +=str.charAt(idx);
+        map[str.charAt(idx)] = true;
+    }
+
+    recursiveRemoveDuplicates(str, idx+1, nstr);
+}
+
+public static void subsequences(String str, int idx , String nstr){
+
+    if (str.length() == idx) {
+        System.out.println(nstr);
+        return;
+    }
+    subsequences(str, idx+1, nstr +str.charAt(idx));
+
+    subsequences(str, idx+1, nstr);
+}
+
+public static void uniqueSubsequences(String str , int idx , String nstr , HashSet<String> set){
+
+    if (str.length() == idx) {
+        if (set.contains(nstr)) {
+            return;
+        } else {
+            System.out.println(nstr);
+            set.add(nstr);
+            return;
+        }
+    }
+
+
+    uniqueSubsequences(str, idx +1, nstr + str.charAt(idx), set);
+
+    uniqueSubsequences(str, idx+1, nstr, set);
+}
+
+
+public static void permutation1 (String str, String prefix){
+
+    if (str.length() == 0) {
+        System.out.println(prefix);
+        return;
+    }
+    for (int i = 0; i < str.length(); i++) {
+        
+        String rem = str.substring(0,i) + str.substring(i+1);
+
+        permutation1(rem, prefix + str.charAt(i));
+    }
+}
 
 
 
@@ -1331,7 +1394,28 @@ public static void main(String[] args) {
 
 
         recurisveWayToMoveAllXToTheEnd("ramsitxaxxrxamsxxitaxxramxsxxxixxtxxxxaram", 0,0, " ");
+        System.out.println();
 
+
+        recursiveRemoveDuplicates("ramsitaramsitaram", 0, " ");
+        System.out.println();
+
+
+        subsequences("ABC", 0, " ");
+        System.out.println();
+        subsequences("AAA", 0, " ");
+        System.out.println();
+
+
+        HashSet<String> set = new HashSet<>();
+        uniqueSubsequences("ABC", 0, " ", set);
+        System.out.println();
+        uniqueSubsequences("AAA", 0, " ", set);
+        System.out.println();
+
+
+        permutation1("RAM", " ");
+        System.out.println();
 
         
     }
